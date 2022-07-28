@@ -48,9 +48,3 @@ npm install --save multer
 
 //Permitir acesso a API
 npm install --save cors
-
-//Gerar o backup do banco de dados MongoDB
-mongodump --db celke --out c:\data\db
-
-//Restaurar o backup do banco de dados MongoDB
-mongorestore --db celke c:\data\db\celke
