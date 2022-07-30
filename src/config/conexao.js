@@ -5,7 +5,7 @@ class DataBase {
         this.mongoDataBase();
     }
     mongoDataBase() {
-        this.mongoDBConnection = mongoose.connect('mongodb://localhost/sevenBackOffice', {
+        this.mongoDBConnection = mongoose.connect('mongodb+srv://sevenidadm:sevenidadm123@cluster0.qipl1.mongodb.net/test', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(() => {
@@ -17,4 +17,3 @@ class DataBase {
 }
 
 export default new DataBase();
-//'mongodb+srv://joieloliveira:jo131012@cluster0.zqnjq.mongodb.net/test'
