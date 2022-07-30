@@ -7,32 +7,32 @@ class UserController {
 
     async index(req, res) {
 
-        res.json({Name: "Ola Mundo"});
+        // res.json({Name: "Ola Mundo"});
 
-        // const { page = 1 } = req.query;
-        // const { limit = 40 } = req.query;
-        // await User.paginate({ ativo: true }, {
-        //     select: '_id name email cel data_de_inicio data_de_nascimento turma formatura_e_m expectativa_de_viagem createdAt updatedAt',
-        //     page,
-        //     limit,
-        //     populate: 'academico fisica ingles tecnica treinos'
-        //     // populate: ({
-        //     //     path: 'treinos',
-        //     //     options: { limit: 2 }
-        //     // })
-        // }).then((users) => {
+        const { page = 1 } = req.query;
+        const { limit = 40 } = req.query;
+        await User.paginate({ ativo: true }, {
+            select: '_id name email cel data_de_inicio data_de_nascimento turma formatura_e_m expectativa_de_viagem createdAt updatedAt',
+            page,
+            limit,
+            populate: 'academico fisica ingles tecnica treinos'
+            // populate: ({
+            //     path: 'treinos',
+            //     options: { limit: 2 }
+            // })
+        }).then((users) => {
 
-        //     return res.json({
-        //         error: false,
-        //         users: users
-        //     });
-        // }).catch((erro) => {
-        //     return res.status(400).json({
-        //         error: true,
-        //         code: 106,
-        //         message: "Erro: Não foi possível executar a solicitação!"
-        //     });
-        // });
+            return res.json({
+                error: false,
+                users: users
+            });
+        }).catch((erro) => {
+            return res.status(400).json({
+                error: true,
+                code: 106,
+                message: "Erro: Não foi possível executar a solicitação!"
+            });
+        });
     };
 
     async show(req, res) {
